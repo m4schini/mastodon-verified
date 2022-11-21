@@ -18,14 +18,14 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("=> NEW REQUEST! <=")
 		fmt.Println("referer:", r.Referer())
-		fmt.Println("=> <=")
+		fmt.Println("<= REQUEST DONE =>")
 
 		_, err := w.Write([]byte(`<head><title>malte</title></head><body>moin</body>`))
 		if err != nil {
 			log.Fatalln(err)
 		}
 	})
-	if err := http.ListenAndServe("localhost:"+port, nil); err != nil {
+	if err := http.ListenAndServe("0.0.0.0:"+port, nil); err != nil {
 		log.Fatalln(err)
 	}
 }
